@@ -134,4 +134,4 @@ with tab3:
     st.plotly_chart(fig_hist, use_container_width=True)
 
 st.markdown("---")
-st.caption("Built with 💻 Streamlit & ML | By Uzair")
+st.caption("Created By Muhammad Uzair | © 2026")
