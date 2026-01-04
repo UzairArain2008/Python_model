@@ -1,40 +1,64 @@
-# 🌸 Iris Flower Classification using Random Forest
+# 🌸 Iris Flower Classification App
 
-This project is a **machine learning web application** that predicts the species of an Iris flower using a **Random Forest Classifier**.  
-The model is trained on the classic **Iris dataset** and deployed using **Streamlit** with an interactive user interface.
-
----
-
-## 🚀 Features
-
-- Predict Iris flower species in real time
-- Interactive UI with sliders for input features
-- Prediction confidence and probability visualization
-- Feature importance chart for model explainability
-- Batch prediction using CSV file upload
-- Fast performance using cached model loading
+An advanced **Machine Learning web application** built using **Streamlit** that classifies Iris flowers using a **Random Forest model**.  
+The app includes interactive UI controls, real-time predictions, probability confidence, and **2D & 3D visualizations** powered by Plotly.
 
 ---
 
-## 🧠 Machine Learning Model
+## 🚀 Project Overview
+
+- **Dataset:** Iris Dataset (from `sklearn.datasets`)
+- **Model Used:** Random Forest Classifier
+- **Framework:** Streamlit
+- **Visualization:** Plotly (2D + 3D interactive charts)
+- **Model Persistence:** Joblib
+
+This project demonstrates a complete ML pipeline:
+
+> Dataset → Model Training → Model Saving → UI-based Prediction & Visualization
+
+---
+
+## 📊 Dataset Information
+
+- **Name:** Iris Dataset
+- **Source:** `sklearn.datasets.load_iris`
+- **Total Samples:** 150
+- **Features:**
+  - Sepal Length (cm)
+  - Sepal Width (cm)
+  - Petal Length (cm)
+  - Petal Width (cm)
+- **Target Classes:**
+  - Setosa
+  - Versicolor
+  - Virginica
+
+The dataset is used to train a **Random Forest Classifier** for multi-class classification.
+
+---
+
+## 🤖 Model Details
 
 - **Algorithm:** Random Forest Classifier
-- **Dataset:** Iris Dataset (from scikit-learn)
-- **Features Used:**
-  - Sepal Length
-  - Sepal Width
-  - Petal Length
-  - Petal Width
-- **Model Saving:** Joblib (`.pkl` file)
+- **Library:** scikit-learn
+- **Task:** Multi-class classification
+- **Model File:** `iris_rf_model.joblib`
+
+The trained model is loaded inside the Streamlit app and used for real-time predictions.
 
 ---
 
-## 🛠️ Tech Stack
+## 📦 Imports Used
 
-- Python
-- Streamlit
-- Scikit-learn
-- NumPy
-- Pandas
-- Matplotlib
-- Joblib
+### 🔹 Streamlit App (`app.py`)
+
+```python
+import streamlit as st
+import numpy as np
+import pandas as pd
+import joblib
+import plotly.express as px
+import plotly.graph_objects as go
+from sklearn.datasets import load_iris
+```
