@@ -6,14 +6,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.datasets import load_iris
 
-# ------------------ PAGE CONFIG ------------------
 st.set_page_config(
     page_title="Iris ML App",
     page_icon="🌸",
     layout="wide"
 )
 
-# ------------------ LOAD DATA & MODEL ------------------
 iris = load_iris()
 X = iris.data
 y = iris.target
@@ -26,7 +24,6 @@ df = pd.DataFrame(X, columns=feature_names)
 df["species"] = y
 df["species_name"] = df["species"].apply(lambda x: target_names[x])
 
-# ------------------ SIDEBAR ------------------
 st.sidebar.title("🌿 Input Features")
 
 sepal_length = st.sidebar.slider(
@@ -44,25 +41,20 @@ petal_width = st.sidebar.slider(
 
 input_data = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
 
-# ------------------ PREDICTION ------------------
 prediction = model.predict(input_data)[0]
 prediction_proba = model.predict_proba(input_data)[0]
 
-# ------------------ MAIN UI ------------------
 st.title("🌸 Iris Flower Classification App")
 st.caption("Random Forest • Streamlit • Plotly • ML")
 
-# ------------------ METRICS ------------------
 col1, col2, col3 = st.columns(3)
 
 col1.metric("🌼 Prediction", target_names[prediction])
 col2.metric("🔥 Confidence", f"{np.max(prediction_proba)*100:.2f}%")
 col3.metric("📦 Model", "Random Forest")
 
-# ------------------ TABS ------------------
 tab1, tab2, tab3 = st.tabs(["📊 Visualizations", "🧠 Model Confidence", "📈 Dataset Overview"])
 
-# ================== TAB 1: VISUALS ==================
 with tab1:
     st.subheader("2D Feature Relationship")
 
@@ -107,7 +99,6 @@ with tab1:
 
     st.plotly_chart(fig_3d, use_container_width=True)
 
-# ================== TAB 2: CONFIDENCE ==================
 with tab2:
     st.subheader("Prediction Probability")
 
@@ -126,7 +117,6 @@ with tab2:
 
     st.plotly_chart(fig_bar, use_container_width=True)
 
-# ================== TAB 3: DATASET ==================
 with tab3:
     st.subheader("Iris Dataset Preview")
     st.dataframe(df.head(20), use_container_width=True)
@@ -143,6 +133,5 @@ with tab3:
 
     st.plotly_chart(fig_hist, use_container_width=True)
 
-# ------------------ FOOTER ------------------
 st.markdown("---")
 st.caption("Built with 💻 Streamlit & ML | By Uzair")
